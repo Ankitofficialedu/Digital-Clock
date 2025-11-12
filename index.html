@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer UI</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1b003a, #2d046e, #3a0ca3);
+      font-family: 'Arial', sans-serif;
+    }
+
+    .timer-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .square {
+      width: 120px;
+      height: 120px;
+      background: #ff2d75;
+      position: absolute;
+      top: -30px;
+      left: -70px;
+      border-radius: 10px;
+      z-index: 0;
+    }
+
+    .circle {
+      width: 150px;
+      height: 150px;
+      background: #3da4ff;
+      position: absolute;
+      bottom: -50px;
+      right:-70px;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .timer {
+      /* background: linear-gradient(90deg, #a200ff, #5600ff); */
+      padding: 25px 70px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 40px;
+      letter-spacing: 2px;
+      z-index:1;
+      box-shadow: 0 8px 25px rgba(0,0,0,3.9);
+    }
+
+    .time {
+      text-align: center;
+    }
+
+    .time span {
+      display: block;
+      font-size: 14px;
+      font-weight: normal;
+      margin-top: 5px;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+    .btn,button{
+      background-color:orange;
+      margin-top: 182px;
+      padding: 11px 26px;
+      margin-left: -189px;
+      outline: none;
+      border-radius: 8px;
+      border: none; 
+    }
+
+    .btn-1{
+      background-color:orange;
+      margin-top: 182px;
+      padding: 11px 26px ;
+      margin-left: -144px;
+      outline: none;
+      border-radius: 8px;
+      border: none; 
+    }
+    /* .num{
+      font-style:normal 
+    } */
+  </style>
+</head>
+<body>
+  <div class="timer-container">
+    <div class="square"></div>
+    <div class="circle"></div>
+    <div class="timer">
+      
+      <!-- <div class="time">00 <span class="num">HOURS</span></div>
+       :
+      <div class="time">00 <span>MINS</span></div>
+      :
+      <div class="time">00 <span>SEC</span></div> -->
+
+      <div class="time">
+<span class="num hours">00</span>
+<span>HOURS</span></div>
+:
+<div class="time">
+<span class="num mins">00</span> 
+<span>MINS</span></div>
+:
+<div class="time">
+<span class="num secs">00</span> 
+<span>SEC</span></div>
+
+    </div>
+  </div>
+   <button class="btn-1">Start</button>
+   <button class="btn">Stop</button>
+   <button class="button">Reset</button>
+
+</body>
+<script>
+
+// let hours=document.querySelector(".hours");
+// let mins =document.querySelector(".mins");
+// let secs =document.querySelector(".secs");
+// let btns=document.querySelector(".btn");
+// let btn=document.querySelector(".btn-1");
+
+
+
+
+// function updateClock() {
+//   let date = new Date();
+//   hours.innerHTML = date.getHours();
+//   mins.innerHTML = date.getMinutes();
+//   secs.innerHTML = date.getSeconds();
+
+// }
+// setInterval(updateClock,1000);
+// updateClock();
+
+// let intervalId;
+// document.querySelector(".btn-1").addEventListener("click", () => {
+//       if(!intervalId){ // only start if not already running
+//         updateClock();
+//         intervalId = setInterval(updateClock, 1000);
+//       }
+//     });
+
+//     document.querySelector(".btn").addEventListener("click", () => {
+//       clearInterval(intervalId);
+//       intervalId = null; // reset so start can work again
+//     });
+
+
+
+
+let hours=document.querySelector(".hours");
+let mins =document.querySelector(".mins");
+let secs =document.querySelector(".secs");
+
+let intervalId; // store timer ID
+
+function updateClock() {
+  let date = new Date();
+  hours.innerHTML = String(date.getHours()).padStart(2,"0");
+  mins.innerHTML = String(date.getMinutes()).padStart(2,"0");
+  secs.innerHTML = String(date.getSeconds()).padStart(2,"0");
+}
+
+// Start button
+document.querySelector(".btn-1").addEventListener("click",() =>{
+  if (!intervalId) { // only if not already running
+    updateClock();
+    intervalId =setInterval(updateClock,
+    1000);
+  }
+});
+
+// Stop button
+document.querySelector(".btn").addEventListener("click",() => {
+  clearInterval(intervalId);
+  intervalId = null;
+});
+
+document.querySelector(".button").addEventListener("click", () => {
+      clearInterval(intervalId); // stop timer
+      intervalId = null;
+      hours.innerHTML = "00";
+      mins.innerHTML = "00";
+      secs.innerHTML = "00";
+    });
+
+
+
+
+
+// let intervalIds;
+// function updateclock() {
+//   let date=new date();
+//   hours.innerHTML=(date.getHours());
+//   secs.innerHTML=(date.getSeconds());
+  
+// }
+// button.addEventListener('click',()=>{
+//   if (!intervalIds) {
+//     updateClock();
+//     intervalIds=setInterval(updateClock,1000)
+//     }
+
+// });
+
+// btn.addEventListener('click',()=>{
+//   clearInterval(intervalIds);
+//   intervalIds=null;
+
+// });
+
+// addEventListener('click',()=>{
+// clearInterval(intervalIds)
+// hours.innerHTML="00";
+// secs.innerHTML="";
+// mins.innerHTML="";
+// });
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
